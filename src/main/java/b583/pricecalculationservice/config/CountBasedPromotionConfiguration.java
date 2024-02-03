@@ -24,6 +24,20 @@ public class CountBasedPromotionConfiguration {
     @JsonProperty
     private List<@NotNull @Positive BigDecimal> percentOffSequence;
 
+    CountBasedPromotionConfiguration() {
+        // Deserialization
+    }
+
+    CountBasedPromotionConfiguration(Instant promotionStartTime, Instant promotionEndTime, List<@NotNull @Positive BigDecimal> percentOffSequence) {
+        this.promotionStartTime = promotionStartTime;
+        this.promotionEndTime = promotionEndTime;
+        this.percentOffSequence = percentOffSequence;
+    }
+
+    public static CountBasedPromotionConfigurationBuilder builder() {
+        return new CountBasedPromotionConfigurationBuilder();
+    }
+
     public Instant getPromotionStartTime() {
         return promotionStartTime;
     }
