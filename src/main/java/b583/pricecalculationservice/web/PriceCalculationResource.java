@@ -9,6 +9,7 @@ import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 
 import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.math.RoundingMode;
 
 @Path("/v1/price")
@@ -20,7 +21,7 @@ public class PriceCalculationResource {
     @Path("{productUuid}")
     @Timed
     public PriceCalculationDTO calculatePrice(@NotNull @NotBlank @PathParam("productUuid") String productUuid,
-                                     @NotNull @Positive @QueryParam("amount") Integer amount) {
+                                     @NotNull @Positive @QueryParam("amount") BigInteger amount) {
 
         // TODO implement business logic
         return new PriceCalculationDTO(BigDecimal.valueOf(1.116).setScale(2, RoundingMode.DOWN));
