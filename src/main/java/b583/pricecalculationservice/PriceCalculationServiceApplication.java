@@ -1,6 +1,8 @@
 package b583.pricecalculationservice;
 
 import b583.pricecalculationservice.config.PriceCalculationServiceConfiguration;
+import com.google.inject.AbstractModule;
+import com.google.inject.Guice;
 import io.dropwizard.core.Application;
 import io.dropwizard.core.setup.Environment;
 
@@ -12,6 +14,16 @@ public class PriceCalculationServiceApplication extends Application<PriceCalcula
 
     @Override
     public void run(PriceCalculationServiceConfiguration priceCalculationServiceConfiguration, Environment environment) throws Exception {
-        System.out.println("breakpoint parking");
+
+        // Setup dependency injection
+        final var injector = Guice.createInjector(
+                new AbstractModule() {
+                    @Override
+                    protected void configure() {
+                        bind(PriceCalculationServiceConfiguration.class).toInstance(priceCalculationServiceConfiguration);
+                    }
+                }
+        );
+
     }
 }
