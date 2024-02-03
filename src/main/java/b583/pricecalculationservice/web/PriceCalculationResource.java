@@ -1,6 +1,8 @@
 package b583.pricecalculationservice.web;
 
+import b583.pricecalculationservice.service.PriceCalculationService;
 import com.codahale.metrics.annotation.Timed;
+import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -8,23 +10,32 @@ import jakarta.validation.constraints.Positive;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 
-import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.math.RoundingMode;
+import java.util.UUID;
 
 @Path("/v1/price")
 @Produces(MediaType.APPLICATION_JSON)
 @Singleton
 public class PriceCalculationResource {
 
+    @Inject
+    private PriceCalculationService priceCalculationService;
+
     @GET
     @Path("{productUuid}")
     @Timed
     public PriceCalculationDTO calculatePrice(@NotNull @NotBlank @PathParam("productUuid") String productUuid,
-                                     @NotNull @Positive @QueryParam("amount") BigInteger amount) {
+                                     @NotNull @Positive @QueryParam("amount") Integer amount) {
 
-        // TODO implement business logic
-        return new PriceCalculationDTO(BigDecimal.valueOf(1.116).setScale(2, RoundingMode.DOWN));
+        return new PriceCalculationDTO(priceCalculationService.calculatePrice(stringToUuid(productUuid), amount));
+    }
+
+    private UUID stringToUuid(String uuid) {
+        try {
+            return UUID.fromString(uuid);
+        } catch (IllegalArgumentException e) {
+            // Return 404 in case invalid UUID is given
+            throw new NotFoundException();
+        }
     }
 
 }
