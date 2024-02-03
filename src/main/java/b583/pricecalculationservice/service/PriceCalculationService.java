@@ -35,11 +35,11 @@ public class PriceCalculationService {
                 .stream()
                 .map(promotion -> CountBasedPromotionPriceCalculator.calculatePrice(promotion, product.getBasePrice(), amount));
 
-        // Check all configured promotions to find the best price
+        // Check all configured promotions to find the best price for the consumer
         return Stream.concat(percentOffPromotionPrices, countBasedPromotionPrices)
                 .filter(Optional::isPresent)
                 .map(Optional::get)
-                .max(BigDecimal::compareTo)
+                .min(BigDecimal::compareTo)
                 // In case there are no active promotions, fallback to basic price calculation
                 .orElseGet(() -> product.getBasePrice().multiply(BigDecimal.valueOf(amount)));
     }
