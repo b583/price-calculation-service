@@ -17,8 +17,12 @@ import static java.util.Objects.isNull;
 @Singleton
 public class PriceCalculationService {
 
-    @Inject
     private PriceCalculationServiceConfiguration configuration;
+
+    @Inject
+    PriceCalculationService(PriceCalculationServiceConfiguration configuration) {
+        this.configuration = configuration;
+    }
 
     public BigDecimal calculatePrice(UUID productUuid, Integer amount) {
         final var product = configuration.getProducts().get(productUuid);

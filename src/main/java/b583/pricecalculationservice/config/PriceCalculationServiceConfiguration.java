@@ -15,6 +15,14 @@ public class PriceCalculationServiceConfiguration extends Configuration {
     @JsonProperty
     private Map<@NotNull UUID, @NotNull ProductConfiguration> products;
 
+    PriceCalculationServiceConfiguration() {
+        // Deserialization
+    }
+
+    public PriceCalculationServiceConfiguration(Map<@NotNull UUID, @NotNull ProductConfiguration> products) {
+        this.products = products;
+    }
+
     public Map<UUID, ProductConfiguration> getProducts() {
         return products;
     }

@@ -25,6 +25,20 @@ public class ProductConfiguration {
     @JsonProperty
     private List<@NotNull CountBasedPromotionConfiguration> countBasedPromotions;
 
+    ProductConfiguration() {
+        // Deserialization
+    }
+
+    ProductConfiguration(BigDecimal basePrice, List<@NotNull PercentOffPromotionConfiguration> percentOffPromotions, List<@NotNull CountBasedPromotionConfiguration> countBasedPromotions) {
+        this.basePrice = basePrice;
+        this.percentOffPromotions = percentOffPromotions;
+        this.countBasedPromotions = countBasedPromotions;
+    }
+
+    public static ProductConfigurationBuilder builder() {
+        return new ProductConfigurationBuilder();
+    }
+
     public BigDecimal getBasePrice() {
         return basePrice;
     }
