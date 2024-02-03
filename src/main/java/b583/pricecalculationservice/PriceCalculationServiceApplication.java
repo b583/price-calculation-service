@@ -1,6 +1,7 @@
 package b583.pricecalculationservice;
 
 import b583.pricecalculationservice.config.PriceCalculationServiceConfiguration;
+import b583.pricecalculationservice.web.PriceCalculationResource;
 import com.google.inject.AbstractModule;
 import com.google.inject.Guice;
 import io.dropwizard.core.Application;
@@ -25,5 +26,7 @@ public class PriceCalculationServiceApplication extends Application<PriceCalcula
                 }
         );
 
+        // Register web resources
+        environment.jersey().register(injector.getInstance(PriceCalculationResource.class));
     }
 }
