@@ -1,2 +1,39 @@
-# Dummy needed to avoid ConfigurationParsingException until actual configuration is defined
-dummy: "Hello World!"
+products:
+  {
+    d651b6a0-6753-43a3-be55-c7917dce55d6:
+      {
+        basePrice: 199.99,
+        percentOffPromotions: [
+            {
+              promotionStartTime: '2024-02-03T11:00:00Z',
+              promotionEndTime: '2024-02-04T23:00:00Z',
+              percentOff: 4
+            }
+          ],
+        countBasedPromotions: [
+          {
+            promotionStartTime: '2024-02-03T11:00:00Z',
+            promotionEndTime: '2024-02-04T23:00:00Z',
+            percentOffSequence: [ 3, 5, 7, 10, 15 ]
+          }
+        ]
+      },
+    97aee9c6-a843-4abd-8cd8-ed1ed5d5216e:
+      {
+        basePrice: 299.99,
+        percentOffPromotions: [
+          {
+            promotionStartTime: '2024-02-03T11:00:00Z',
+            promotionEndTime: '2024-02-04T23:00:00Z',
+            percentOff: 20
+          }
+        ],
+        countBasedPromotions: [
+          {
+            promotionStartTime: '2024-02-03T11:00:00Z',
+            promotionEndTime: '2024-02-04T23:00:00Z',
+            percentOffSequence: [ 3, 5, 7, 10, 15 ]
+          }
+        ]
+      }
+  }
