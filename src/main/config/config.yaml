@@ -1,0 +1,2 @@
+# Dummy needed to avoid ConfigurationParsingException until actual configuration is defined
+dummy: "Hello World!"
