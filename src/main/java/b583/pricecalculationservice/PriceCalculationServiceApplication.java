@@ -7,7 +7,7 @@ import com.google.inject.Guice;
 import io.dropwizard.core.Application;
 import io.dropwizard.core.setup.Environment;
 
-class PriceCalculationServiceApplication extends Application<PriceCalculationServiceConfiguration> {
+public class PriceCalculationServiceApplication extends Application<PriceCalculationServiceConfiguration> {
 
     public static void main(String[] args) throws Exception {
         new PriceCalculationServiceApplication().run(args);

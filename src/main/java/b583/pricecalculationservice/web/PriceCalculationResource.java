@@ -17,8 +17,12 @@ import java.util.UUID;
 @Singleton
 public class PriceCalculationResource {
 
+    private final PriceCalculationService priceCalculationService;
+
     @Inject
-    private PriceCalculationService priceCalculationService;
+    public PriceCalculationResource(PriceCalculationService priceCalculationService) {
+        this.priceCalculationService = priceCalculationService;
+    }
 
     @GET
     @Path("{productUuid}")

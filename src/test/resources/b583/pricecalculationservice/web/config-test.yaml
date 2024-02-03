@@ -1,0 +1,15 @@
+products:
+  {
+    d651b6a0-6753-43a3-be55-c7917dce55d6:
+      {
+        basePrice: 199.99,
+        percentOffPromotions: [
+          {
+            promotionStartTime: '2024-02-03T11:00:00Z',
+            promotionEndTime: '2099-02-03T11:00:00Z',
+            percentOff: 5
+          }
+        ],
+        countBasedPromotions: []
+      }
+  }
