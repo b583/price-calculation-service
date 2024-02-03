@@ -10,7 +10,7 @@ import static org.apache.commons.lang3.BooleanUtils.isFalse;
 
 public class PercentOffPromotionPriceCalculator {
 
-    private static BigDecimal ONE_HUNDRED = BigDecimal.valueOf(100);
+    private static final BigDecimal ONE_HUNDRED = BigDecimal.valueOf(100);
 
     private PercentOffPromotionPriceCalculator() {}
 
