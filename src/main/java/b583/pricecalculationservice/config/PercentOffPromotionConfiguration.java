@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 
-import java.math.BigInteger;
+import java.math.BigDecimal;
 import java.time.Instant;
 
 public class PercentOffPromotionConfiguration {
@@ -20,7 +20,7 @@ public class PercentOffPromotionConfiguration {
     @NotNull
     @Positive
     @JsonProperty
-    private BigInteger percentOff;
+    private BigDecimal percentOff;
 
     public Instant getPromotionStartTime() {
         return promotionStartTime;
@@ -30,7 +30,7 @@ public class PercentOffPromotionConfiguration {
         return promotionEndTime;
     }
 
-    public BigInteger getPercentOff() {
+    public BigDecimal getPercentOff() {
         return percentOff;
     }
 }

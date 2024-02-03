@@ -5,7 +5,7 @@ import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 
-import java.math.BigInteger;
+import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.List;
 
@@ -22,7 +22,7 @@ public class CountBasedPromotionConfiguration {
     @NotNull
     @NotEmpty
     @JsonProperty
-    private List<@NotNull @Positive BigInteger> percentOffSequence;
+    private List<@NotNull @Positive BigDecimal> percentOffSequence;
 
     public Instant getPromotionStartTime() {
         return promotionStartTime;
@@ -32,7 +32,7 @@ public class CountBasedPromotionConfiguration {
         return promotionEndTime;
     }
 
-    public List<BigInteger> getPercentOffSequence() {
+    public List<BigDecimal> getPercentOffSequence() {
         return percentOffSequence;
     }
 }
