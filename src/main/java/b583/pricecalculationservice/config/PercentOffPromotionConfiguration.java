@@ -22,6 +22,20 @@ public class PercentOffPromotionConfiguration {
     @JsonProperty
     private BigDecimal percentOff;
 
+    PercentOffPromotionConfiguration() {
+        // Deserialization
+    }
+
+    PercentOffPromotionConfiguration(Instant promotionStartTime, Instant promotionEndTime, BigDecimal percentOff) {
+        this.promotionStartTime = promotionStartTime;
+        this.promotionEndTime = promotionEndTime;
+        this.percentOff = percentOff;
+    }
+
+    public static PercentOffPromotionConfigurationBuilder builder() {
+        return new PercentOffPromotionConfigurationBuilder();
+    }
+
     public Instant getPromotionStartTime() {
         return promotionStartTime;
     }
