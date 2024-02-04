@@ -1,7 +1,6 @@
 package b583.pricecalculationservice.service.calculator;
 
 import b583.pricecalculationservice.config.CountBasedPromotionConfiguration;
-import b583.pricecalculationservice.config.PercentOffPromotionConfiguration;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
@@ -29,8 +28,9 @@ class CountBasedPromotionPriceCalculatorTest {
                 .calculatePrice(promotionConfiguration, BigDecimal.valueOf(199.99), 10);
 
         // Then price is calculated with maximal promotion applied
-        assertThat(price).isPresent();
-        assertThat(price.get()).isEqualTo(new BigDecimal("1859.90"));
+        assertThat(price)
+                .isPresent()
+                .contains(new BigDecimal("1859.90"));
         // Use constructor to workaround BigDecimal.valueOf(1859.90) returning 1859.9, breaking assertion
     }
 
@@ -50,8 +50,9 @@ class CountBasedPromotionPriceCalculatorTest {
                 .calculatePrice(promotionConfiguration, BigDecimal.valueOf(199.99), 2);
 
         // Then price is calculated with proper promotion applied
-        assertThat(price).isPresent();
-        assertThat(price.get()).isEqualTo(BigDecimal.valueOf(379.98));
+        assertThat(price)
+                .isPresent()
+                .contains(BigDecimal.valueOf(379.98));
     }
 
     @Test

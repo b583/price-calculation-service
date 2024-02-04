@@ -27,8 +27,9 @@ class PercentOffPromotionPriceCalculatorTest {
                 .calculatePrice(promotionConfiguration, BigDecimal.valueOf(199.99), 3);
 
         // Then price is calculated with promotion applied
-        assertThat(price).isPresent();
-        assertThat(price.get()).isEqualTo(BigDecimal.valueOf(509.97));
+        assertThat(price)
+                .isPresent()
+                .contains(BigDecimal.valueOf(509.97));
     }
 
     @Test
