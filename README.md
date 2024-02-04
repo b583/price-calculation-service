@@ -36,8 +36,7 @@ mvn package
 
 ### Configuration
 Example hardcoded configuration for one product with two types of promotions.  
-Please mind the `promotionStartTime` and `promotionEndTime` properties.  
-Service operates on UTC time.
+Please keep in mind that the `promotionStartTime` and `promotionEndTime` properties are in UTC time.
 ```yaml
 products:
   {
@@ -61,12 +60,25 @@ products:
       }
   }
 ```
+Actual configuration file available to the application when Dockerized relies on environment variable.
+```shell
+products: ${PRODUCTS_CONFIGURATION:-}
+```
+
 #### Export Products section as environment variable
 Set below (flattened products section from above) as `PRODUCTS_CONFIGURATION` (Operating System dependent)
 ```shell
   {     d651b6a0-6753-43a3-be55-c7917dce55d6:       {         basePrice: 199.99,         percentOffPromotions: [           {             promotionStartTime: '2024-02-03T11:00:00Z',             promotionEndTime: '2024-02-04T23:00:00Z',             percentOff: 4           }         ],         countBasedPromotions: [           {             promotionStartTime: '2024-02-03T11:00:00Z',             promotionEndTime: '2024-02-04T23:00:00Z',             percentOffSequence: [ 3, 5, 7, 10, 15 ]           }         ]       }   }
 ```
-
+**Note that some terminal emulators might alter the copied text when pasted into them. The safest way is to put the config into a temporary file and copy its contents directly.**
+##### Export (PowerShell)
+```shell
+$env:PRODUCTS_CONFIGURATION=$(cat temporary_file_with_config)
+```
+##### Export (bash)
+```shell
+PRODUCTS_CONFIGURATION=$(cat temporary_file_with_config)
+```
 ### Run
 
 #### Java
